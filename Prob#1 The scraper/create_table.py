@@ -29,14 +29,19 @@ while js.find("/baan/") >0 :
 ############################
 #####  web Scraping   ######
 ############################
-
+1
 webbase_url = "https://rubnongkaomai.com" 
 detail= []  #for example [["อะอึ๋ม","Lost, but okay 'cause we’re TOGETHER."] , ...]
 for path in baan_ls: 
     url = requests.get(webbase_url+path)
 
     soup = BeautifulSoup(url.content, "html.parser")
-    detail.append([soup.find("h1").text,soup.find("h3").text])
+
+    txt = soup.find("h3").prettify()
+    txt = txt[txt.find('">')+2:txt.find("</h3>",txt.find('">')+2)].strip()
+    ## didn't use  soup.find("h3").text because <br> doesn't show problem
+    detail.append([soup.find("h1").text,txt])
+    
     print("added url : " + webbase_url+path )
 
 
