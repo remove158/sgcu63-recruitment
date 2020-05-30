@@ -1,5 +1,8 @@
 import json
 
+#################################
+###### program methods #######
+#################################
 
 def bfs(node,path,target,ls):
     folder = []
@@ -9,13 +12,17 @@ def bfs(node,path,target,ls):
         else :
             for j in node[i]:
                 if(j==target):
-                   output = (path + '/' + target)
+                   output = (path + '/' + target) # for example "\folder1" + "\file1" 
                    ls.append(output)
     
-    folder.sort()
+    folder.sort() #sort because case depths of 2 files are equal.
     for i in folder :
         bfs(node[i],path + "/"+ i,target,ls)
+        
 
+#################################
+###### fileSearch methods #######
+#################################
 
 def fileSearch(fileToSearch, filesObj):
     output = [] 
@@ -26,8 +33,11 @@ def fileSearch(fileToSearch, filesObj):
     return output
 
 
+#############################
+###### to run program #######
+#############################
 
-print(fileSearch('file1','test.json'))
+print(fileSearch('file1','test.json')) # test find file1 in test.json
 
 
 
