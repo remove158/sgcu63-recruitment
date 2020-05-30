@@ -58,7 +58,8 @@ message += '''</tbody></table></div></body></html>'''
 ############################
 
 f = codecs.open("table.html", "w", "utf-8")
-f.write(message)
+message = BeautifulSoup(message, 'html.parser') ## its easy to read html code
+f.write(message.prettify()) 
 print("file created.")
 f.close()
 
